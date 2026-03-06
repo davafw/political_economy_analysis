@@ -30,7 +30,7 @@ Mengembangkan sistem analitik berbasis data terbuka untuk menganalisis hubungan 
 ### Timeline
 3 bulan (Maret – Mei 2026)
 
----
+--
 
 # 👥 Stakeholders
 
