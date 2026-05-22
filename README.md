@@ -38,7 +38,7 @@ Mengembangkan sistem analitik berbasis data terbuka untuk menganalisis hubungan 
 Global Economic Policy Research Initiative  
 
 ### Team Members
-- **Data Engineer:** Moch. Arrizal Syach P  
+- **Data Engineer:** Moch. Arrizal Syach Putra  
 - **Data Analyst:** Alivia Rizka Wardani  
 - **Project Manager:** Dava Febri Wardana  
 
