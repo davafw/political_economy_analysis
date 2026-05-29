@@ -95,7 +95,7 @@ Annual
 Inflation, Consumer Prices (Annual %)
 
 **URL / Access Point:**  
-https://data.worldbank.org/indicator/NY.GDP.DEFL.KD.ZG?most_recent_value_desc=false  
+(https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG) 
 
 **Data Owner:**  
 World Bank  
