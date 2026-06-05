@@ -27,9 +27,9 @@ Dataset yang telah bersih (*clean data*) digunakan untuk membangun model Machine
 
 ### 1. Extract (Pengambilan Data)
 - **Sumber Data:**
-  - Democracy Index (2006-2024) – *Our World in Data* (Format: CSV)
-  - Inflation, Consumer Prices – *World Bank* (Format: CSV)
-  - GDP Growth (Annual %) – *World Bank* (Format: CSV)
+  - Democracy Index (2006-2024) – *Our World in Data* (Format: CSV)-https://ourworldindata.org/grapher/democracy-index-eiu
+  - Inflation, Consumer Prices – *World Bank* (Format: CSV)-https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG
+  - GDP Growth (Annual %) – *World Bank* (Format: CSV)-https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG
 - **Metode Pengambilan:**
   - Penarikan data *direct download* (CSV) untuk data Our World in Data dan World Bank.
 
