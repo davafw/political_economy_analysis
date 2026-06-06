@@ -3,6 +3,8 @@ import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 import os
 from datetime import datetime
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, classification_report
 
 # =========================================================================
 # 1. KONFIGURASI PATH & DATABASE
@@ -33,23 +35,41 @@ df_master = pd.read_sql_query(query_source, conn)
 # =========================================================================
 # 3. PRE-PROCESSING & PELATIHAN MODEL (TRAINING ON THE FLY)
 # =========================================================================
-# Definisikan Fitur Prediktor
-fitur_cols = ['Democracy Index', 'Inflation_Value', 'GDP_Growth_Lag1', 'Inflation_Lag1', 'Democracy_Index_Lag1']
+# 1. KEMBALI KE FITUR INTI (Buang kolom region yang menjadi noise)
+fitur_inti = ['Democracy Index', 'Inflation_Value', 'GDP_Growth_Lag1', 'Inflation_Lag1', 'Democracy_Index_Lag1']
 
-# Membuat label target tiruan berbasis logika resesi (GDP < 0) untuk melatih model
 df_master['Is_Recession'] = (df_master['GDP_Growth_Value'] < 0).astype(int)
+df_clean = df_master.dropna(subset=fitur_inti)
 
-# Hapus baris yang memiliki nilai kosong pada fitur utama
-df_clean = df_master.dropna(subset=fitur_cols)
-
-X = df_clean[fitur_cols]
+X = df_clean[fitur_inti]
 y = df_clean['Is_Recession']
 
-cetak_log(f"Melatih model Random Forest menggunakan {len(df_clean)} baris data historis...")
-model_classifier = RandomForestClassifier(n_estimators=100, random_state=42)
-model_classifier.fit(X, y)
-cetak_log("Pelatihan model selesai dengan sukses.")
+# 2. ATURAN 80/20
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
+cetak_log(f"Total Data Bersih: {len(X)} baris.")
+cetak_log(f"-> Menggunakan {len(fitur_inti)} variabel metrik ekonomi murni (Tanpa Region).")
+
+# 3. OPTIMASI ALGORITMA (Hapus max_depth, perbesar n_estimators)
+# Kita hapus class_weight='balanced' karena pada Random Forest sering kali mengorbankan terlalu banyak precision
+model_classifier = RandomForestClassifier(
+    n_estimators=300,        # Pohon diperbanyak agar tebakan lebih presisi
+    min_samples_split=4,     # Mencegah model terlalu menghafal (overfitting) pada data spesifik
+    random_state=42
+)
+model_classifier.fit(X_train, y_train)
+
+# 4. EVALUASI MODEL
+y_pred_test = model_classifier.predict(X_test)
+akurasi = accuracy_score(y_test, y_pred_test)
+
+cetak_log(f"SUKSES: Evaluasi Model pada data uji menghasilkan akurasi sebesar {akurasi * 100:.2f}%")
+
+print("\nLaporan Detail Klasifikasi (Perhatikan baris '1' untuk Resesi):")
+print(classification_report(y_test, y_pred_test))
+# =========================================================
+# Setelah teruji akurat, model siap digunakan untuk prediksi batch (Scoring)
+# ... (Lanjut ke kode df_clean['Prediksi_Resesi'] = model_classifier.predict(X) seperti sebelumnya) ...
 # =========================================================================
 # 4. PROSES PREDIKSI BATCH (SCORING)
 # =========================================================================
