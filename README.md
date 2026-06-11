@@ -65,6 +65,6 @@ Dataset yang telah bersih (*clean data*) digunakan untuk membangun model Machine
   - Menggunakan algoritma klasifikasi untuk analisis prediktif.
 
 ## 🔗 Link Proyek
-- **ETL Pipeline:** `[Isi dengan link Google Colab atau file .ipynb di GitHub]`
-- **Machine Learning:** ``
+- **ETL Pipeline:** `https://github.com/davafw/political_economy_analysis/blob/main/ETL/Data_Engineer_UAS_(ETL)_.ipynb`
+- **Machine Learning:** `https://github.com/davafw/political_economy_analysis/blob/main/ML/app.py`
 - **Dashboard / Visualisasi:** https://datastudio.google.com/u/0/reporting/f0fc7a8f-d50e-4c47-8817-83f6fe65758b/page/TlJ0C
