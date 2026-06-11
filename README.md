@@ -67,4 +67,4 @@ Dataset yang telah bersih (*clean data*) digunakan untuk membangun model Machine
 ## 🔗 Link Proyek
 - **ETL Pipeline:** `[Isi dengan link Google Colab atau file .ipynb di GitHub]`
 - **Machine Learning:** ``
-- **Dashboard / Visualisasi:** ``
+- **Dashboard / Visualisasi:** `https://datastudio.google.com/u/0/reporting/f0fc7a8f-d50e-4c47-8817-83f6fe65758b/page/TlJ0C`
